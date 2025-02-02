@@ -190,9 +190,10 @@ jobs:
       releaseImage: ${{ steps.releaseImage.outputs.releaseImage }}
 
   publishImage:
-    if: ${{ (github.ref_name == 'main') && (needs.release.outputs.releaseImage == '1') }}
+    # if: ${{ (github.ref_name == 'main') && (needs.release.outputs.releaseImage == '1') }}
     runs-on: ubuntu-latest
-    needs: release
+    # needs: release
+    needs: [test, containerScan, dast]
     permissions:
       actions: read
       contents: read
