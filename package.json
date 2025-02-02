@@ -1,6 +1,6 @@
 {
   "name": "express-api",
-  "version": "1.0.29",
+  "version": "1.0.0",
   "description": "",
   "main": "src/app.ts",
   "scripts": {
