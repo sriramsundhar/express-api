@@ -6,8 +6,8 @@ Reference Architecture for express api. Source is organized as shown [here](./do
 
 ### Prerequisites
 
-Node.js >= v22
-NPM >= v10
+Node.js = v22
+NPM = v10
 
 ### Install Application
 
