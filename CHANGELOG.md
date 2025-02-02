@@ -1,3 +1,11 @@
+## [1.0.5](https://github.com/sriramsundhar/express-api/compare/v1.0.4...v1.0.5) (2025-02-02)
+
+
+### Bug Fixes
+
+* Merge pull request [#7](https://github.com/sriramsundhar/express-api/issues/7) from sriramsundhar/fixRelease ([de0cf0b](https://github.com/sriramsundhar/express-api/commit/de0cf0bd871706115e4c224a2807d6766987b2fd))
+* release ([ae4aaff](https://github.com/sriramsundhar/express-api/commit/ae4aafffdb472f9a01f96c6b65d53cbe73a35041))
+
 ## [1.0.4](https://github.com/sriramsundhar/express-api/compare/v1.0.3...v1.0.4) (2025-02-02)
 
 
