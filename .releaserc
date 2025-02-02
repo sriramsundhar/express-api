@@ -1,6 +1,6 @@
 {
   "branches": [
-    "fixRelease"
+    "main"
   ],
   "repositoryUrl": "git@github.com:sriramsundhar/express-api.git",
   "plugins": [
