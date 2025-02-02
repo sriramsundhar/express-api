@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/sriramsundhar/express-api/compare/v1.0.0...v1.0.1) (2025-02-02)
+
+
+### Bug Fixes
+
+* Update README.md ([fe74d8d](https://github.com/sriramsundhar/express-api/commit/fe74d8de64e3d54bfdf22ed03368e6321cde329a))
+
 # 1.0.0 (2025-02-02)
 
 
