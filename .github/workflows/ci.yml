@@ -213,7 +213,6 @@ jobs:
         with:
           images: ${{ github.event.repository.full_name }}
           tags: |
-            type=sha,prefix={{branch}}-
             type=sha
             type=ref,event=branch
       - name: Extract version from package.json
