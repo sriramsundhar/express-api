@@ -3,6 +3,13 @@
 
 ### Bug Fixes
 
+* initial commit ([e141ad0](https://github.com/sriramsundhar/express-api/commit/e141ad0741e53d457e757c69fd6ae483fc6310e6))
+
+# 1.0.0 (2025-02-02)
+
+
+### Bug Fixes
+
 * initial commit ([daa767c](https://github.com/sriramsundhar/express-api/commit/daa767c4a93edc496c263e242ce030a5e4135a12))
 * initial commit ([d7fb50f](https://github.com/sriramsundhar/express-api/commit/d7fb50f8f30c9c484ab6f6f6f28e5418b26cf273))
 
