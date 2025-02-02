@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/sriramsundhar/express-api/compare/v1.0.6...v1.0.7) (2025-02-02)
+
+
+### Bug Fixes
+
+* publish image ([3081880](https://github.com/sriramsundhar/express-api/commit/30818801651b3d047d1b49a6afb6f8caf908b574))
+
 ## [1.0.6](https://github.com/sriramsundhar/express-api/compare/v1.0.5...v1.0.6) (2025-02-02)
 
 
