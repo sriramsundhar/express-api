@@ -179,7 +179,7 @@ jobs:
       - name: semantic-release
         run: npm ci && npx semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_COMMITTER_EMAIL: test@test.com
           GIT_COMMITTER_NAME: publisher
       - id: releaseImage
