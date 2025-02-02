@@ -77,7 +77,6 @@ We are currently configured to use [angular-convention](https://github.com/conve
 Please refer [here](https://github.com/semantic-release/commit-analyzer?tab=readme-ov-file#rules-definition) to find the correct convention to trigger the correct release. Please refer the [config](./.releaserc) for current configuration.
 
 ### Release from local
-
 ```sh
 npx semantic-release --no-ci
 ```
