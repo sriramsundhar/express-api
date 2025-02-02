@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/sriramsundhar/express-api/compare/v1.0.3...v1.0.4) (2025-02-02)
+
+
+### Bug Fixes
+
+* release ([75dcd56](https://github.com/sriramsundhar/express-api/commit/75dcd5626e34cd94c816b64c81bb4aae1e7c8cf4))
+
 ## [1.0.3](https://github.com/sriramsundhar/express-api/compare/v1.0.2...v1.0.3) (2025-02-02)
 
 
