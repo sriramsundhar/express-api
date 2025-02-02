@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-07-10T23:07:41.090Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0" etag="sC0C2F61W3V_hxpSXnhw" version="24.6.4" type="google">
+  <diagram name="beCodeArchitecture" id="Yb9OhrI-_06gcFpBtz0B">
+    <mxGraphModel dx="1146" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-0" />
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-1" parent="NZFrRIbcgLrQ_RVs8TsW-0" />
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="230" y="160" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="230" y="280" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="230" y="400" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="410" y="280" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="40" y="120" width="600" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="50" y="160" width="180" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" source="NZFrRIbcgLrQ_RVs8TsW-9" target="NZFrRIbcgLrQ_RVs8TsW-12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="280" />
+              <mxPoint x="330" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-9" value="Controllers &amp;amp; Router" style="rounded=1;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="270" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" source="NZFrRIbcgLrQ_RVs8TsW-12" target="NZFrRIbcgLrQ_RVs8TsW-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" source="NZFrRIbcgLrQ_RVs8TsW-12" target="NZFrRIbcgLrQ_RVs8TsW-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-12" value="Managers" style="rounded=1;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="270" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" source="NZFrRIbcgLrQ_RVs8TsW-14" target="NZFrRIbcgLrQ_RVs8TsW-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-14" value="Repository&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="270" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-15" value="Domain Entities / Models" style="rounded=1;whiteSpace=wrap;html=1;rotation=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="80" y="200" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-16" value="Clients" style="rounded=1;whiteSpace=wrap;html=1;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="440" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-19" value="DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="300" y="630" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-21" value="Errors" style="rounded=1;whiteSpace=wrap;html=1;rotation=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="80" y="280" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-22" value="Config&lt;div&gt;(Convict &amp;amp; dotEnv)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;rotation=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="80" y="360" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-23" value="Logging&lt;div&gt;(Winston)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;rotation=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="80" y="440" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-24" value="Cutting across" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="110" y="160" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-25" value="Monitoring" style="rounded=1;whiteSpace=wrap;html=1;rotation=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="82.5" y="520" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NZFrRIbcgLrQ_RVs8TsW-26" value="Node app" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="NZFrRIbcgLrQ_RVs8TsW-1" vertex="1">
+          <mxGeometry x="40" y="120" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

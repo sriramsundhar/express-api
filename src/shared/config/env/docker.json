@@ -1,0 +1,5 @@
+{
+  "mongo": {
+    "url": "mongodb://dbUser:changeMe@host.docker.internal:27017/dw?authSource=admin&directConnection=true"
+  }
+}
