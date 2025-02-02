@@ -1,0 +1,20 @@
+services:
+  db:
+    extends:
+      file: ./docker-compose.yml
+      service: mongo
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    environment:
+      - MONGO_URL=mongodb://dbUser:changeMe@db:27017/dw?authSource=admin&directConnection=true
+    healthcheck:
+      test: apk update && apk add curl && curl --fail http://localhost:3000/health || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,228 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+name: CI
+concurrency:
+  group: ${{ github.event_name }}-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: true
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Install, build & lint
+        run: |
+          npm ci
+          npm run lint
+          npm run format:ci
+          npm run build
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: oke-py/npm-audit-action@v2
+        with:
+          audit_level: high
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create_issues: false
+          production_flag: true
+  helm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.2.0
+        with:
+          version: v3.14.4
+      - run: helm lint iac/helm
+      - name: Run Terrascan
+        id: terrascan
+        uses: tenable/terrascan-action@main
+        with:
+          iac_dir: ./iac
+          iac_type: helm
+          only_warn: true
+
+  containerScan:
+    runs-on: ubuntu-latest
+    needs: [build, audit, helm]
+    permissions:
+      actions: read
+      contents: read
+      packages: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          tags: ${{ github.event.repository.full_name }}:latest
+          push: false
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: sriramsundhar
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Docker Scout
+        id: docker-scout
+        uses: docker/scout-action@v1.11.0
+        with:
+          command: cves,recommendations
+          image: local://${{ github.event.repository.full_name }}:latest
+          to-latest: true
+          ignore-base: true
+          only-severities: critical,high
+          sarif-file: sarif.output.json
+          summary: true
+          write-comment: true
+          exit-on: vulnerability
+          exit-code: true
+          github-token: ${{ secrets.GITHUB_TOKEN }} # to be able to write the comment
+  test:
+    runs-on: ubuntu-latest
+    needs: [build, audit, helm]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: './docker-compose-ci.yml'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: install & build
+        run: |
+          npm ci
+          npm run build
+      - name: Setup mongo tools - only shell
+        uses: boly38/action-mongo-tools@stable
+        with:
+          mongo-shell: 'true'
+          mongo-tools: 'false'
+      - name: Wait for mongo
+        run: ./.github/scripts/waitForMongo.sh
+      - name: wait for app
+        run: ./.github/scripts/waitForServices.sh
+      - name: test
+        run: |
+          echo 'running tests'
+          curl http://localhost:3000/health
+          npm run test
+
+  dast:
+    runs-on: ubuntu-latest
+    needs: [build, audit, helm]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: './docker-compose-ci.yml'
+          services: |
+            db
+      - name: Setup mongo tools - only shell
+        uses: boly38/action-mongo-tools@stable
+        with:
+          mongo-shell: 'true'
+          mongo-tools: 'false'
+      - name: Wait for mongo
+        run: ./.github/scripts/waitForMongo.sh
+      - uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: './docker-compose-ci.yml'
+      - name: wait for app
+        run: ./.github/scripts/waitForServices.sh
+      - name: ZAP Scan
+        uses: zaproxy/action-api-scan@v0.8.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
+          format: openapi
+          target: 'http://localhost:3000/api-docs'
+          cmd_options: '-a'
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs')
+            const data = fs.readFileSync('./report_md.md', 'utf-8');
+            const eventName = "${{ github.event_name }}"
+            const script = require('./.github/scripts/dastReport.js')
+            await script({github, context, core, eventName, data})
+
+  release:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    needs: [test, containerScan, dast]
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: semantic-release
+        run: npm ci && npx semantic-release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_COMMITTER_EMAIL: test@test.com
+          GIT_COMMITTER_NAME: publisher
+      - id: releaseImage
+        run: |
+          currentSha="$(git rev-parse HEAD)"
+          echo "releaseImage=$(expr "$currentSha" != "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
+    outputs:
+      releaseImage: ${{ steps.releaseImage.outputs.releaseImage }}
+
+  publishImage:
+    if: ${{ (github.ref_name == 'main') && (needs.release.outputs.releaseImage == '1') }}
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ github.event.repository.full_name }}
+          tags: |
+            type=sha,prefix={{branch}}-
+            type=sha
+            type=ref,event=branch
+      - name: Extract version from package.json
+        id: getVersion
+        run: echo "VERSION=$(jq -r '.version' package.json)" >> $GITHUB_OUTPUT
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}, ${{ github.event.repository.full_name }}:${{ steps.getVersion.outputs.VERSION }}
+          labels: ${{ steps.meta.outputs.labels }}

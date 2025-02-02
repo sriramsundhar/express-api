@@ -1,0 +1,18 @@
+services:
+  mongo:
+    image: sriramsundhar/mongo
+    restart: unless-stopped
+    command:
+      ['--replSet', 'rs0', '--bind_ip_all', '--keyFile', '/data/replica.key']
+    ports:
+      - 27017:27017
+    volumes:
+      - ./test/testData:/tmp/dw
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dbUser
+      MONGO_INITDB_ROOT_PASSWORD: changeMe
+      MONGO_INITDB_DATABASE: dw
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo -u $${MONGO_INITDB_ROOT_USERNAME} -p $${MONGO_INITDB_ROOT_PASSWORD} --quiet) -eq 1
+      interval: 10s
+      start_period: 30s
