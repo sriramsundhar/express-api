@@ -193,7 +193,7 @@ jobs:
     # if: ${{ (github.ref_name == 'main') && (needs.release.outputs.releaseImage == '1') }}
     runs-on: ubuntu-latest
     # needs: release
-    needs: [test, containerScan, dast]
+    # needs: [test, containerScan, dast]
     permissions:
       actions: read
       contents: read
