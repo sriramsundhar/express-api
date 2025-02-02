@@ -229,5 +229,5 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}, ${{ github.event.repository.full_name }}:${{ steps.getVersion.outputs.VERSION }}
+          tags: ${{ steps.meta.outputs.tags }}, ghcr.io/${{ github.event.repository.full_name }}:${{ steps.getVersion.outputs.VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
