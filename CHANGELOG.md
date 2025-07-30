@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/sriramsundhar/express-api/compare/v1.0.0...v1.0.1) (2025-07-30)
+
+
+### Bug Fixes
+
+* chore(deps): bump form-data from 4.0.0 to 4.0.4 in the npm_and_yarn group across 1 directory ([#19](https://github.com/sriramsundhar/express-api/issues/19)) ([23bffe0](https://github.com/sriramsundhar/express-api/commit/23bffe0c83ec041b97f6620ae99daf34af805120))
+
 # 1.0.0 (2025-02-02)
 
 
