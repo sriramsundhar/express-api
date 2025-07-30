@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/sriramsundhar/express-api/compare/v1.0.1...v1.0.2) (2025-07-30)
+
+
+### Bug Fixes
+
+* Add flake ([#12](https://github.com/sriramsundhar/express-api/issues/12)) ([6dd62b9](https://github.com/sriramsundhar/express-api/commit/6dd62b97d493801ad150c5b7f39a0a97e02f5644))
+
 ## [1.0.1](https://github.com/sriramsundhar/express-api/compare/v1.0.0...v1.0.1) (2025-07-30)
 
 
