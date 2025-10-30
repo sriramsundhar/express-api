@@ -130,3 +130,5 @@ reports
 
 # tsp
 src/@typespec
+.direnv/
+.idea/

@@ -2,8 +2,6 @@ services:
   mongo:
     image: sriramsundhar/mongo
     restart: unless-stopped
-    command:
-      ['--replSet', 'rs0', '--bind_ip_all', '--keyFile', '/data/replica.key']
     ports:
       - 27017:27017
     volumes:
