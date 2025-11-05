@@ -1,50 +1,81 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Express API Constitution
+<!-- 
+Sync Impact Report:
+Version: 1.0.0 (Initial version)
+Modified Principles:
+- All principles newly defined
+Added Sections:
+- Core Principles
+- API Standards
+- Development Process
+- Governance
+Templates Requiring Updates:
+✅ .specify/templates/plan-template.md
+✅ .specify/templates/spec-template.md
+✅ .specify/templates/tasks-template.md
+Follow-up TODOs: None
+-->
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. API-First Design
+Every endpoint must be defined in TypeSpec before implementation. API specifications must be complete, validated, and reviewed before any implementation work begins. This ensures consistent API design and documentation-driven development.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Layered Architecture
+Strict adherence to the layered architecture pattern: Controllers → Managers → Repositories. Each layer has specific responsibilities and must not be bypassed. This ensures separation of concerns and maintainable code structure.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Test-Driven Development
+All features require comprehensive test coverage before merging:
+- Unit tests for business logic
+- Integration tests for API endpoints
+- End-to-end tests for critical workflows
+Tests must be written before implementation following the Red-Green-Refactor cycle.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Error Handling & Observability
+Standardized error handling through AppError class. All errors must be:
+- Properly categorized and logged
+- Include appropriate HTTP status codes
+- Provide clear error messages
+Structured logging required for all significant operations.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Version Management
+Semantic versioning (MAJOR.MINOR.PATCH) strictly enforced:
+- MAJOR: Breaking API changes
+- MINOR: Backwards-compatible features
+- PATCH: Bug fixes
+All breaking changes require migration documentation.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## API Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- OpenAPI/Swagger documentation generated from TypeSpec
+- RESTful endpoint naming and HTTP method usage
+- Consistent response structures
+- Rate limiting and security headers
+- API versioning in URL path
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Process
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Feature branches with conventional commit messages
+- Automated CI/CD pipeline checks
+- Code review required with at least one approval
+- Security scanning (DAST) before production deployment
+- Docker-based deployment with Kubernetes
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution serves as the foundational document for the Express API project. All development work must comply with these principles and standards.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Amendment Process:
+1. Propose changes with clear rationale
+2. Review and discussion period
+3. Team approval required
+4. Update documentation and templates
+5. Version bump following semantic versioning
+
+Compliance:
+- All pull requests must verify adherence
+- Regular audits of codebase
+- Automated checks where possible
+- Deviations require documented justification
+
+**Version**: 1.0.0 | **Ratified**: 2025-11-04 | **Last Amended**: 2025-11-04
