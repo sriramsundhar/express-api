@@ -1,6 +1,20 @@
 # Implementation Plan: [FEATURE]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Branch**: `[###-feature-name]` | **Date**: [DATE] |### Documentation (this feature)
+
+```text
+specs/[###-feature]/
+├── plan.md              # This file (/speckit.plan command output)
+├── research.md          # Phase 0 output (/speckit.plan command)
+├── data-model.md        # Phase 1 output (/speckit.plan command)
+├── quickstart.md        # Phase 1 output (/speckit.plan command)
+├── security/            # Security documentation
+│   ├── threat-model.md  # Threat modeling and risk assessment
+│   └── security-controls.md # Security controls and mitigations
+├── contracts/           # Phase 1 output (/speckit.plan command)
+│   ├── api/            # API specifications
+│   └── security/       # Security-specific contracts (auth, RBAC)
+└── tasks.md            # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan) [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
@@ -17,21 +31,71 @@
   the iteration process.
 -->
 
+### Core Technical Stack
 **Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
 **Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
 **Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
 **Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
 **Project Type**: [single/web/mobile - determines source structure]  
+
+### Performance & Scale
 **Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
 **Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+
+### Security Requirements
+**Authentication**: [auth mechanism, e.g., JWT, OAuth2, API keys or NEEDS CLARIFICATION]
+**Authorization**: [RBAC model, scopes, permissions or NEEDS CLARIFICATION]
+**Data Classification**: [data sensitivity levels and handling requirements or NEEDS CLARIFICATION]
+**Compliance**: [regulatory requirements, e.g., GDPR, SOC2, PCI or N/A]
+**Security Testing**: [security test requirements, e.g., SAST, DAST, pen testing or NEEDS CLARIFICATION]
+**API Security**: 
+- Rate Limiting: [requests/minute/client or NEEDS CLARIFICATION]
+- Input Validation: [validation requirements or NEEDS CLARIFICATION]
+- Security Headers: [required headers or NEEDS CLARIFICATION]
+- TLS Version: [minimum TLS version requirement or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### API-First Design
+- [ ] API specification defined in TypeSpec before implementation
+- [ ] API documentation complete and reviewed
+- [ ] API contract validation tests prepared
+
+### Security-First Design
+- [ ] Authentication and authorization mechanisms specified
+- [ ] Input validation requirements defined
+- [ ] Security headers and protocols specified
+- [ ] Data classification and handling defined
+- [ ] Security testing plan outlined
+- [ ] Threat model completed (for sensitive features)
+
+### Layered Architecture
+- [ ] Controllers layer defined and isolated
+- [ ] Managers layer responsibilities outlined
+- [ ] Repository layer data access patterns specified
+- [ ] Clear separation of concerns maintained
+
+### Test-Driven Development
+- [ ] Unit test specifications prepared
+- [ ] Integration test plan defined
+- [ ] Security test cases identified
+- [ ] End-to-end test scenarios outlined
+
+### Error Handling & Observability
+- [ ] Error categories identified
+- [ ] Error responses defined (without sensitive data)
+- [ ] Logging strategy specified (with PII handling)
+- [ ] Security event monitoring defined
+
+### Version Management
+- [ ] Version impact assessed
+- [ ] Breaking changes identified
+- [ ] Security impact evaluated
+- [ ] Migration plan prepared (if needed)
 
 ## Project Structure
 
@@ -94,7 +158,16 @@ ios/ or android/
 **Structure Decision**: [Document the selected structure and reference the real
 directories captured above]
 
-## Complexity Tracking
+## Risk Assessment
+
+### Security Complexity
+
+| Security Feature | Risk Level | Mitigation Strategy | Compliance Impact |
+|-----------------|------------|---------------------|-------------------|
+| [e.g., Custom Auth] | [High/Medium/Low] | [Strategy details] | [Compliance requirements] |
+| [e.g., Data Storage] | [Risk level] | [Mitigation approach] | [Compliance impact] |
+
+### Technical Complexity
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
