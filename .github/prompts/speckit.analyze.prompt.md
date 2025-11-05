@@ -77,48 +77,133 @@ Create internal representations (do not include raw artifacts in output):
 
 Focus on high-signal findings. Limit to 50 findings total; aggregate remainder in overflow summary.
 
-#### A. Duplication Detection
+#### A. Security Classification Analysis
+
+- Verify security classification is present and complete
+- Check data sensitivity levels are properly defined
+- Validate access control requirements
+- Ensure compliance needs are identified
+- Check authentication/authorization specifications
+
+#### B. Security Control Detection
+
+- Verify required security controls are specified
+- Check input validation requirements
+- Validate output sanitization rules
+- Ensure rate limiting controls
+- Check security header requirements
+- Verify encryption standards
+- Validate audit logging specifications
+
+#### C. Duplication & Conflict Detection
 
 - Identify near-duplicate requirements
-- Mark lower-quality phrasing for consolidation
+- Check for conflicting security controls
+- Validate consistent security terminology
+- Verify consistent authentication/authorization patterns
+- Check for redundant security measures
 
-#### B. Ambiguity Detection
+#### D. Security Ambiguity Detection
 
-- Flag vague adjectives (fast, scalable, secure, intuitive, robust) lacking measurable criteria
-- Flag unresolved placeholders (TODO, TKTK, ???, `<placeholder>`, etc.)
+- Flag vague security terms lacking specific criteria
+- Identify undefined security controls
+- Check for ambiguous authentication requirements
+- Validate specific authorization rules
+- Flag unspecified compliance requirements
+- Check for undefined security boundaries
+- Flag unresolved security TODOs
 
-#### C. Underspecification
+#### E. Security Underspecification
 
-- Requirements with verbs but missing object or measurable outcome
-- User stories missing acceptance criteria alignment
-- Tasks referencing files or components not defined in spec/plan
+- Check security requirements have measurable outcomes
+- Validate security controls have implementation tasks
+- Verify security testing coverage
+- Check security monitoring specifications
+- Validate incident response procedures
+- Check compliance validation methods
 
-#### D. Constitution Alignment
+#### F. Constitution Security Alignment
 
-- Any requirement or plan element conflicting with a MUST principle
-- Missing mandated sections or quality gates from constitution
+- Verify Security-First Design principle adherence
+- Check API security requirements
+- Validate error handling security
+- Verify version management security impact
+- Check security documentation completeness
+- Validate security testing requirements
 
-#### E. Coverage Gaps
+#### G. Security Coverage Gaps
 
-- Requirements with zero associated tasks
-- Tasks with no mapped requirement/story
-- Non-functional requirements not reflected in tasks (e.g., performance, security)
+- Security requirements without associated tasks
+- Missing security test coverage
+- Incomplete threat modeling
+- Unaddressed security edge cases
+- Missing security monitoring tasks
+- Incomplete compliance validation tasks
 
-#### F. Inconsistency
+#### H. Technical Inconsistency
 
-- Terminology drift (same concept named differently across files)
-- Data entities referenced in plan but absent in spec (or vice versa)
-- Task ordering contradictions (e.g., integration tasks before foundational setup tasks without dependency note)
-- Conflicting requirements (e.g., one requires Next.js while other specifies Vue)
+- Security terminology drift
+- Authentication/authorization inconsistencies
+- Data protection requirement conflicts
+- Security control implementation conflicts
+- Compliance requirement inconsistencies
+- Security test coverage gaps
 
 ### 5. Severity Assignment
 
-Use this heuristic to prioritize findings:
+Use this security-weighted heuristic to prioritize findings:
 
-- **CRITICAL**: Violates constitution MUST, missing core spec artifact, or requirement with zero coverage that blocks baseline functionality
-- **HIGH**: Duplicate or conflicting requirement, ambiguous security/performance attribute, untestable acceptance criterion
-- **MEDIUM**: Terminology drift, missing non-functional task coverage, underspecified edge case
-- **LOW**: Style/wording improvements, minor redundancy not affecting execution order
+#### Security Severity (Prefixed with S-)
+- **S-CRITICAL**: 
+  - Missing security classification
+  - Undefined authentication/authorization
+  - Missing data protection controls
+  - Compliance requirement violations
+  - Security principle violations
+  - Critical security control gaps
+
+- **S-HIGH**:
+  - Ambiguous security controls
+  - Incomplete threat modeling
+  - Missing security test coverage
+  - Undefined security boundaries
+  - Security terminology inconsistencies
+  - Authentication/authorization ambiguities
+
+- **S-MEDIUM**:
+  - Security documentation gaps
+  - Non-critical security control redundancy
+  - Security monitoring gaps
+  - Minor security terminology drift
+  - Non-critical security test gaps
+
+- **S-LOW**:
+  - Security documentation style
+  - Security terminology improvements
+  - Non-critical security optimizations
+
+#### General Severity (Prefixed with G-)
+- **G-CRITICAL**: 
+  - Violates non-security constitution MUST
+  - Missing core spec artifact
+  - Zero coverage blocking requirement
+
+- **G-HIGH**:
+  - Duplicate/conflicting requirements
+  - Ambiguous performance attributes
+  - Untestable acceptance criteria
+
+- **G-MEDIUM**:
+  - General terminology drift
+  - Missing non-security task coverage
+  - Underspecified edge cases
+
+- **G-LOW**:
+  - Style improvements
+  - Minor redundancies
+  - Documentation formatting
+
+Note: Security findings (S-prefix) always take precedence over general findings (G-prefix) of the same severity level.
 
 ### 6. Produce Compact Analysis Report
 

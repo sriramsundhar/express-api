@@ -27,55 +27,98 @@ Execution steps:
 
 2. Load the current spec file. Perform a structured ambiguity & coverage scan using this taxonomy. For each category, mark status: Clear / Partial / Missing. Produce an internal coverage map used for prioritization (do not output raw map unless no questions will be asked).
 
+   Security Classification & Controls:
+   - Data sensitivity classification (HIGH/MEDIUM/LOW)
+   - Access control requirements
+   - Authentication mechanisms
+   - Authorization model
+   - Compliance requirements
+   - Audit logging needs
+   - Data protection requirements
+   
    Functional Scope & Behavior:
    - Core user goals & success criteria
    - Explicit out-of-scope declarations
-   - User roles / personas differentiation
+   - User roles & permissions mapping
+   - Role-based access patterns
 
    Domain & Data Model:
    - Entities, attributes, relationships
    - Identity & uniqueness rules
    - Lifecycle/state transitions
    - Data volume / scale assumptions
+   - PII/sensitive data fields
+   - Data retention requirements
+   - Data encryption needs
 
-   Interaction & UX Flow:
-   - Critical user journeys / sequences
-   - Error/empty/loading states
-   - Accessibility or localization notes
+   Security Flow & Controls:
+   - Authentication flows
+   - Authorization checkpoints
+   - Security headers
+   - Input validation rules
+   - Output sanitization
+   - Token management
+   - Session handling
 
    Non-Functional Quality Attributes:
    - Performance (latency, throughput targets)
    - Scalability (horizontal/vertical, limits)
    - Reliability & availability (uptime, recovery expectations)
    - Observability (logging, metrics, tracing signals)
-   - Security & privacy (authN/Z, data protection, threat assumptions)
-   - Compliance / regulatory constraints (if any)
+   - Rate limiting thresholds
+   - Security event monitoring
+   - Compliance requirements
 
    Integration & External Dependencies:
    - External services/APIs and failure modes
    - Data import/export formats
    - Protocol/versioning assumptions
+   - TLS requirements
+   - API authentication
+   - Third-party security requirements
 
-   Edge Cases & Failure Handling:
-   - Negative scenarios
-   - Rate limiting / throttling
-   - Conflict resolution (e.g., concurrent edits)
+   Security Edge Cases & Failure Handling:
+   - Authentication failures
+   - Authorization violations
+   - Rate limit breaches
+   - Token expiration/rotation
+   - Security event handling
+   - Attack scenario responses
+   - Injection attempt handling
 
-   Constraints & Tradeoffs:
-   - Technical constraints (language, storage, hosting)
-   - Explicit tradeoffs or rejected alternatives
+   Security Constraints & Tradeoffs:
+   - Security framework requirements
+   - Cryptographic standards
+   - Security testing tools
+   - Compliance tooling
+   - Security vs. performance tradeoffs
+   - Security vs. usability tradeoffs
+
+   Security Testing & Validation:
+   - Security test coverage
+   - Penetration testing requirements
+   - Security acceptance criteria
+   - Compliance validation methods
+   - Security monitoring requirements
 
    Terminology & Consistency:
-   - Canonical glossary terms
-   - Avoided synonyms / deprecated terms
+   - Canonical security terms
+   - Compliance terminology
+   - Security role definitions
+   - Security event classifications
 
    Completion Signals:
-   - Acceptance criteria testability
-   - Measurable Definition of Done style indicators
+   - Security acceptance criteria
+   - Security test coverage metrics
+   - Compliance validation status
+   - Security control implementation
+   - Security documentation completeness
 
    Misc / Placeholders:
-   - TODO markers / unresolved decisions
-   - Ambiguous adjectives ("robust", "intuitive") lacking quantification
+   - Security TODOs
+   - Compliance gaps
+   - Unresolved security decisions
+   - Ambiguous security requirements
 
    For each category with Partial or Missing status, add a candidate question opportunity unless:
    - Clarification would not materially change implementation or validation strategy
@@ -86,11 +129,37 @@ Execution steps:
     - Each question must be answerable with EITHER:
        - A short multiple‑choice selection (2–5 distinct, mutually exclusive options), OR
        - A one-word / short‑phrase answer (explicitly constrain: "Answer in <=5 words").
-    - Only include questions whose answers materially impact architecture, data modeling, task decomposition, test design, UX behavior, operational readiness, or compliance validation.
-    - Ensure category coverage balance: attempt to cover the highest impact unresolved categories first; avoid asking two low-impact questions when a single high-impact area (e.g., security posture) is unresolved.
-    - Exclude questions already answered, trivial stylistic preferences, or plan-level execution details (unless blocking correctness).
-    - Favor clarifications that reduce downstream rework risk or prevent misaligned acceptance tests.
-    - If more than 5 categories remain unresolved, select the top 5 by (Impact * Uncertainty) heuristic.
+    - Only include questions whose answers materially impact:
+       - Security posture or controls
+       - Authentication/authorization design
+       - Data protection requirements
+       - Compliance obligations
+       - Architecture decisions
+       - Data modeling
+       - Task decomposition
+       - Test design
+       - UX behavior
+       - Operational readiness
+    - Question Priority Order:
+       1. Security classification and data sensitivity
+       2. Authentication and authorization requirements
+       3. Compliance and regulatory needs
+       4. Core functional requirements
+       5. Other requirements
+    - Ensure category coverage with security-first focus:
+       - At least 2 of 5 questions must address security/compliance if any such ambiguities exist
+       - Remaining questions balanced across other categories
+       - Avoid low-impact questions when security concerns are unresolved
+    - Exclude questions already answered, trivial preferences, or plan-level details
+    - Favor clarifications that:
+       1. Reduce security or compliance risk
+       2. Prevent security control misalignment
+       3. Clarify data protection requirements
+       4. Reduce general downstream rework risk
+    - If more than 5 categories remain unresolved, select using weighted Impact * Uncertainty, where:
+       - Security/compliance impact is weighted 2.0
+       - Data protection impact is weighted 1.5
+       - Other impacts are weighted 1.0
 
 4. Sequential questioning loop (interactive):
     - Present EXACTLY ONE question at a time.
