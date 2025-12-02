@@ -15,7 +15,7 @@
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "bundle": "tsc",
-    "test": "cucumber-js",
+    "test": "cucumber-js --config test/cucumber.js",
     "format": "prettier --write \"./**/*.ts\"",
     "format:ci": "prettier --check \"./**/*.ts\"",
     "lint": "eslint --max-warnings 0 ./src",
